@@ -105,3 +105,24 @@ switch (USER_STATUS) {
     console.log("Please register");
     break;
 }
+
+/**
+ * Async - Sync
+ */
+setTimeout(function() {console.log(2)}, 1000);
+setTimeout(function() {console.log(3)}, 2000);
+console.log(1)
+setTimeout(function() {console.log(4)}, 2000);
+
+
+/**
+ * Chaining multiple functions (Currying)
+ */
+const fruits = ["apple", "orange", "lemon"];
+
+const fruitsNew = fruits
+  .map(fruit => fruit.toUpperCase())
+  .filter(fruit => fruit === "LEMON")
+  .map(fruit => fruit.toLowerCase());
+
+console.log(fruitsNew);
