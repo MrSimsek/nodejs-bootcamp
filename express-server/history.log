@@ -1,0 +1,7 @@
+DELETE / 200 23 - 16.498 ms
+GET / 200 20 - 7.803 ms
+GET /note.txt 200 15 - 6.713 ms
+GET /favicon.ico 404 150 - 4.666 ms
+GET /main.css 200 24 - 1.367 ms
+GET /main.css 304 - - 1.002 ms
+GET /main.css 304 - - 4.510 ms
