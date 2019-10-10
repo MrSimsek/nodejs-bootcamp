@@ -5,3 +5,5 @@ GET /favicon.ico 404 150 - 4.666 ms
 GET /main.css 200 24 - 1.367 ms
 GET /main.css 304 - - 1.002 ms
 GET /main.css 304 - - 4.510 ms
+DELETE / 200 23 - 10.482 ms
+GET / 200 20 - 2.069 ms
