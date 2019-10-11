@@ -1,0 +1,10 @@
+<div style="margin: 1em;">
+  <h1>Blog Posts</h1>
+  <ul>
+    <% for(var i = 0; i < blogposts.length; i++) { %>
+    <li style="color:brown;">
+      <a href="/blog/<%= blogposts[i].url %>"><%= blogposts[i].title%></a>
+    </li>
+    <% } %>
+  </ul>
+</div>
