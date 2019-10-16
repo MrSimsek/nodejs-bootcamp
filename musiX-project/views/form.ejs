@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/nav %>
+    <h1>Add Album</h1>
+    <form method="POST" action="/albums/add">
+      <input type="text" name="name" placeholder="Album Name" id="" />
+      <br />
+      <input type="text" name="artist" placeholder="Album Artist" id="" />
+      <br />
+      <input type="text" name="releaseYear" placeholder="Release Year" id="" />
+      <br />
+      <input type="submit" value="Add Album" />
+    </form>
+  </body>
+</html>

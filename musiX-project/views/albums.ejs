@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/nav %>
+    <h1>Albums</h1>
+
+    <ul>
+      <% data.forEach(album => { %>
+      <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
