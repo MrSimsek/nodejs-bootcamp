@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="get-members-button">Get Members</button>
+    <div id="content"></div>
+    <script>
+      const getMembersButton = document.getElementById("get-members-button");
+      const content = document.getElementById("content");
+
+      function getMembersFromServer() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState === 3) {
+            content.innerHTML = "Waiting for members...";
+          }
+          if (this.status === 200 && this.readyState === 4) {
+            setTimeout(() => {
+              content.innerHTML = "";
+              var memberList = document.createElement("ul");
+
+              var membersArray = JSON.parse(this.response);
+
+              membersArray.forEach(member => {
+                var memberItem = document.createElement("li");
+                memberItem.innerText = member.name;
+                memberList.append(memberItem);
+              });
+
+              content.append(memberList);
+            }, 2000);
+          }
+        };
+        xhttp.open("GET", "http://localhost:3000/members");
+        xhttp.send();
+      }
+
+      getMembersButton.addEventListener("click", function() {
+        getMembersFromServer();
+      });
+    </script>
+  </body>
+</html>
