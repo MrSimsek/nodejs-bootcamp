@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Member = require("../models/Member");
 
+const { checkAuth } = require("../middleware/auth");
+
 router.get("/", async (request, response) => {
   const members = await Member.find();
   return response.send(members);
@@ -13,7 +15,7 @@ router.get("/:id", async (request, response) => {
   return response.send(member);
 });
 
-router.post("/", async (request, response) => {
+router.post("/", checkAuth, async (request, response) => {
   const member = new Member(request.body);
   const savedMember = await member.save();
   return response.send(savedMember);
