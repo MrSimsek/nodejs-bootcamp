@@ -4,6 +4,13 @@ const _ = require("lodash");
 const bcrypt = require("bcrypt");
 
 const User = require("../models/User");
+const { checkAuth } = require("../middleware/auth");
+
+// Getting the current user
+router.get("/me", checkAuth, async (request, response) => {
+  const user = await User.findById(request.user._id);
+  return response.send(_.pick(user, ['email']));
+});
 
 router.post("/", async (request, response) => {
   let user = await User.findOne({ email: request.body.email });

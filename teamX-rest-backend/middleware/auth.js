@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const JWT_SECRET = require("../config/secret");
 
 function checkAuth(request, response, next) {
   // Check token from request header
@@ -9,7 +10,7 @@ function checkAuth(request, response, next) {
 
   try {
     // Verify if token is valid
-    const decoded = jwt.verify(token, "jwtSecretKey");
+    const decoded = jwt.verify(token, JWT_SECRET);
     // If valid assign decoded payload to request.user
     request.user = decoded;
     next();

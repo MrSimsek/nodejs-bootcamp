@@ -4,10 +4,15 @@ const router = express.Router();
 const Member = require("../models/Member");
 
 const { checkAuth } = require("../middleware/auth");
+const { checkAdmin } = require("../middleware/admin");
 
 router.get("/", async (request, response) => {
-  const members = await Member.find();
-  return response.send(members);
+  try {
+    const members = await Member.find();
+    response.send(members);
+  } catch (error) {
+    response.status(500).send("Server is not responding!");
+  }
 });
 
 router.get("/:id", async (request, response) => {
@@ -15,7 +20,7 @@ router.get("/:id", async (request, response) => {
   return response.send(member);
 });
 
-router.post("/", checkAuth, async (request, response) => {
+router.post("/", [checkAuth, checkAdmin], async (request, response) => {
   const member = new Member(request.body);
   const savedMember = await member.save();
   return response.send(savedMember);
